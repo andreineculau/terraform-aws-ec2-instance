@@ -177,7 +177,7 @@ resource "aws_instance" "default" {
 
   tags = module.this.tags
 
-  volume_tags = var.volume_tags_enabled ? module.this.tags : {}
+  volume_tags = merge(var.volume_tags_enabled ? module.this.tags : {}, {Name = module.this.id})
 }
 
 resource "aws_eip" "default" {
