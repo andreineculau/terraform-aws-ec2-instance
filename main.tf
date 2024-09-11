@@ -155,6 +155,9 @@ resource "aws_instance" "default" {
     delete_on_termination = var.delete_on_termination
     encrypted             = var.root_block_device_encrypted
     kms_key_id            = var.root_block_device_kms_key_id
+    tags = {
+      Name = module.this.id
+    }
   }
 
   metadata_options {
